@@ -7,7 +7,7 @@
 Summary:	Add options to doctest examples while they are running
 Name:		python-%{module}
 Version:	0.1
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries/Python
 URL:		http://pypi.python.org/pypi/dtopt/
@@ -92,13 +92,15 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc docs/*
-%{py_sitescriptdir}/%{module}
+%dir %{py_sitescriptdir}/%{module}
+%{py_sitescriptdir}/%{module}/*.py[co]
 %{py_sitescriptdir}/%{module}-*.egg-info
 
 %if %{with python3}
 %files -n python3-dtopt
 %defattr(644,root,root,755)
 %doc docs/*
+%dir %{py3_sitescriptdir}/dtopt
 %{py3_sitescriptdir}/%{module}/*.py
 %{py3_sitescriptdir}/%{module}/__pycache__
 %{py3_sitescriptdir}/%{module}-%{version}-py*.egg-info
