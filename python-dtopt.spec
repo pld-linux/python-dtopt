@@ -19,6 +19,7 @@ BuildRequires:	rpmbuild(macros) >= 1.219
 %if %{with python3}
 BuildRequires:	python3-devel
 BuildRequires:	python3-distribute
+BuildRequires:	python3-modules
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
