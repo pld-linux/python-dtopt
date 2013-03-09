@@ -18,7 +18,7 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 %if %{with python3}
 BuildRequires:	python3-devel
-#BuildRequires:	python3-setuptools
+BuildRequires:	python3-distribute
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
