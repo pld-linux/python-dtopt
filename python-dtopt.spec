@@ -7,7 +7,7 @@
 Summary:	Add options to doctest examples while they are running
 Name:		python-%{module}
 Version:	0.1
-Release:	3
+Release:	4
 License:	MIT
 Group:		Libraries/Python
 URL:		http://pypi.python.org/pypi/dtopt/
