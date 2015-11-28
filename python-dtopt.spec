@@ -52,38 +52,21 @@ dtopt import ELLIPSIS
 # Remove bundled egg info if it exists.
 rm -r *.egg-info
 
-%if %{with python3}
-rm -rf py3
-set -- *
-install -d py3
-cp -a "$@" py3
-# There is a print statement in the test that is not python3 compatible.
-rm py3/dtopt/tests.py*
-%endif
-
 %build
-%{__python} setup.py build
+%py_build
 
 %if %{with python3}
-cd py3
-%{__python3} setup.py build
+%py3_build
 %endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__python} setup.py install \
-	--skip-build \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py_install
 
 %py_postclean
 
 %if %{with python3}
-cd py3
-%{__python3} setup.py install \
-	--skip-build \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py3_install
 %endif
 
 %clean
