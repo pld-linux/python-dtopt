@@ -10,9 +10,9 @@ Version:	0.1
 Release:	6
 License:	MIT
 Group:		Libraries/Python
-URL:		http://pypi.python.org/pypi/dtopt/
 Source0:	http://pypi.python.org/packages/source/d/dtopt/dtopt-%{version}.tar.gz
 # Source0-md5:	9a41317149e926fcc408086aedee6bab
+URL:		http://pypi.python.org/pypi/dtopt/
 BuildRequires:	python-distribute
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.710
