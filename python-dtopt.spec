@@ -15,7 +15,7 @@ Source0:	http://pypi.python.org/packages/source/d/dtopt/dtopt-%{version}.tar.gz
 # Source0-md5:	9a41317149e926fcc408086aedee6bab
 BuildRequires:	python-distribute
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 1.710
 %if %{with python3}
 BuildRequires:	python3-devel
 BuildRequires:	python3-distribute
