@@ -9,7 +9,7 @@ Summary:	Add options to doctest examples while they are running
 Summary(pl.UTF-8):	Dodawanie opcji do przykładów doctest w trakcie ich działania
 Name:		python-%{module}
 Version:	0.1
-Release:	10
+Release:	11
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/dtopt/
