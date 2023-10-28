@@ -9,12 +9,13 @@ Summary:	Add options to doctest examples while they are running
 Summary(pl.UTF-8):	Dodawanie opcji do przykładów doctest w trakcie ich działania
 Name:		python-%{module}
 Version:	0.1
-Release:	13
+Release:	14
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/dtopt/
 Source0:	https://files.pythonhosted.org/packages/source/d/dtopt/dtopt-%{version}.tar.gz
 # Source0-md5:	9a41317149e926fcc408086aedee6bab
+Patch0:		dtopt-py3.patch
 URL:		https://pypi.org/project/dtopt/
 %if %{with python2}
 BuildRequires:	python-setuptools
@@ -74,6 +75,7 @@ poprzez:
 
 %prep
 %setup -q -n %{module}-%{version}
+%patch0 -p1
 
 # Remove bundled egg info
 %{__rm} -r *.egg-info
@@ -84,15 +86,16 @@ poprzez:
 
 %if %{with tests}
 PYTHONPATH=$(pwd) \
-%{__python} dtopt/tests.py
+%{__python} dtopt/tests.py 2>&1 | tee tests.log
+# "one error is good"
+grep -q ' 1 failures' tests.log
 %endif
 %endif
 
 %if %{with python3}
 %py3_build
 
-%if 0 && %{with tests}
-# as of 0.1, uses python2 syntax
+%if %{with tests}
 PYTHONPATH=$(pwd) \
 %{__python3} dtopt/tests.py 2>&1 | tee tests.log
 # "one error is good"
@@ -114,8 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 %py3_install
 
 %{__rm} $RPM_BUILD_ROOT%{py3_sitescriptdir}/dtopt/tests.py
-# probably won't be compiled due to python2 syntax
-rm -f $RPM_BUILD_ROOT%{py3_sitescriptdir}/dtopt/__pycache__/tests.cpython-*.py*
+%{__rm} $RPM_BUILD_ROOT%{py3_sitescriptdir}/dtopt/__pycache__/tests.cpython-*.py*
 %endif
 
 %clean
