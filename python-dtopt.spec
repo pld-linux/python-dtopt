@@ -75,7 +75,7 @@ poprzez:
 
 %prep
 %setup -q -n %{module}-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 
 # Remove bundled egg info
 %{__rm} -r *.egg-info
